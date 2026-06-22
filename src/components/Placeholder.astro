@@ -1,0 +1,38 @@
+---
+export interface Props {
+    text: string;
+    aspectRatio?: string;
+}
+
+const { text, aspectRatio = '16/9' } = Astro.props;
+---
+
+<div class="placeholder-box" style={`aspect-ratio: ${aspectRatio};`}>
+    <p class="placeholder-text">{text}</p>
+</div>
+
+<style>
+    .placeholder-box {
+        width: 100%;
+        border: 3px dashed var(--border-color);
+        background-color: var(--bg-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .placeholder-box:hover {
+        border-color: var(--primary-blue);
+        background-color: #f0f7ff;
+    }
+
+    .placeholder-text {
+        color: #6c757d;
+        font-weight: 600;
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 1rem;
+    }
+</style>

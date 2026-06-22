@@ -1,0 +1,64 @@
+---
+const leftCol = [
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68c22d9532a8cd64d0c4bb80.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68b4ad5693b60892b6909ee4.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/6962c0d3c7683b384a72265a.png'
+];
+
+const rightCol = [
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68b4ad56ba67b30978c43917.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/6962c0dff8a93b113e9487e3.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/6962bda9f8a93b1e8a91b5db.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68b4b1ccde84f462d40bc8c0.png'
+];
+---
+<style>
+    .mobile-only { display: none; }
+    @media (max-width: 768px) {
+        .desktop-only { display: none; }
+        .mobile-only { display: block; }
+    }
+    @media (min-width: 769px) {
+        .mobile-only { display: none; }
+        .testimonials-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+</style>
+
+<section class="testimonials-section section" style="background-color: #ffffff; padding-top: 0px; padding-bottom: 0px;">
+    <div class="container" style="max-width: 1000px;">
+        <div class="text-center" style="margin-bottom: 4rem;">
+            <h2 class="fw-black mb-2 desktop-only" style="font-size: 3.5rem; letter-spacing: -0.5px; margin-top: 0px;">Don't Just Take Our Word For It.</h2>
+            <h2 class="fw-black mobile-only" style="text-align: center; line-height: 1.15; letter-spacing: -0.5px; margin-top: 0px; margin-bottom: 1.5rem;">
+                <span style="font-size: 6vw; white-space: nowrap; display: block;">Don't Just Take Our Word</span>
+                <span style="font-size: 6vw; white-space: nowrap; display: block;">For It.</span>
+            </h2>
+
+            <p class="desktop-only" style="font-size: 1.5rem; color: #4a4a4a; max-width: 800px; margin: 0 auto; line-height: 1.5;">
+                See what actual restoration company owners are saying about the AI agent that's transforming their business.
+            </p>
+            <p class="mobile-only" style="text-align: center; line-height: 1.5; color: #4a4a4a; margin: 0 auto;">
+                <span style="font-size: 4.8vw; white-space: nowrap; display: block;">See what actual restoration company</span>
+                <span style="font-size: 4.8vw; white-space: nowrap; display: block;">owners are saying about the AI agent</span>
+                <span style="font-size: 4.8vw; white-space: nowrap; display: block;">that's transforming their business.</span>
+            </p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div style="display: flex; flex-direction: column;">
+                {leftCol.map(img => (
+                    <img src={img} alt="Customer Testimonial" style="width: 100%; height: auto; display: block; border: none; margin: 0; padding: 0;" />
+                ))}
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                {rightCol.map(img => (
+                    <img src={img} alt="Customer Testimonial" style="width: 100%; height: auto; display: block; border: none; margin: 0; padding: 0;" />
+                ))}
+            </div>
+        </div>
+    </div>
+</section>

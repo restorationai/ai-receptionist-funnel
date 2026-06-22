@@ -1,0 +1,183 @@
+---
+const scenarios = [
+    {
+        title: 'THE PERFECT <span style="color:#00FF00">PRE-JOB</span><br/><span style="color:#00FF00">CONFIRMATION</span>',
+        description: 'Watch our AI act as a perfect dispatcher, calling ahead<br/>to confirm safety and access details so your crew<br/>arrives prepared for a smooth, efficient job every time.',
+        video: 'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68be21cc067feb86004d99c0.mp4',
+        poster: 'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68be2176f2b0b9a436fca5e0.png'
+    },
+    {
+        title: 'THE <span style="color:#EF4444">SKEPTIC-TO-</span><br/><span style="color:#EF4444">BELIEVER</span> CALL',
+        description: 'An owner asks about calls, leads, and booking —<br/>our AI handles it all and leaves him impressed.',
+        video: 'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68bddf6b6d0aaa7859d72465.mp4',
+        poster: 'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68bdc4ef7b3d2f105188eb30.png'
+    },
+    {
+        title: 'AUTOMATED <span style="color:#FFE500">5 STAR</span><br/>REVIEW CALL',
+        description: 'Listen as our AI agent makes a natural follow-up<br/>call, expertly handles customer hesitation, and<br/>secures a 5-star review in under three minutes.',
+        video: 'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68be21d26d0aaa83c0df9c80.mp4',
+        poster: 'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68be21747b3d2f812795f7ed.png'
+    }
+];
+---
+
+<section class="section scenarios-section" style="background-color: #ffffff;">
+    <div class="container" style="max-width: 1350px;">
+        <div class="text-center" style="margin-bottom: 4rem;">
+            <h2 class="fw-black scenarios-title desktop-only">Hear Our AI Agents In Real-World Scenarios</h2>
+            <h2 class="fw-black scenarios-title mobile-only" style="text-align: center; line-height: 1.15;">
+                <span style="font-size: 7vw; white-space: nowrap; display: block;">Hear Our AI Agents In</span>
+                <span style="font-size: 7vw; white-space: nowrap; display: block;">Real-World Scenarios</span>
+            </h2>
+
+            <p class="scenarios-subtitle desktop-only">
+                Listen to these real client calls to hear how our AI agent can solve your biggest operational headaches.
+            </p>
+            <p class="scenarios-subtitle mobile-only" style="text-align: center; line-height: 1.5; margin: 0 auto;">
+                <span style="font-size: 4.4vw; white-space: nowrap; display: block;">Listen to these real client calls to hear</span>
+                <span style="font-size: 4.4vw; white-space: nowrap; display: block;">how our AI agent can solve your biggest</span>
+                <span style="font-size: 4.4vw; white-space: nowrap; display: block;">operational headaches.</span>
+            </p>
+        </div>
+
+        <div class="grid grid-cols-3 scenarios-grid">
+            {scenarios.map((scenario, index) => (
+                <div 
+                    class="scenario-item text-center d-flex flex-column" 
+                    style={`animation-delay: ${index * 0.15}s; container-type: inline-size; min-width: 0;`}
+                >
+                    <h3 
+                        class="fw-black scenario-title" 
+                        style="line-height: 1.15; white-space: nowrap; letter-spacing: -0.2px; text-transform: uppercase;" 
+                        set:html={scenario.title} 
+                    />
+                    
+                    <p 
+                        class="scenario-desc"
+                        style="line-height: 1.4; color: #222; white-space: nowrap; width: 100%; margin-left: auto; margin-right: auto;" 
+                        set:html={scenario.description} 
+                    />
+                    
+                    <div class="scenario-video mt-auto">
+                        <video 
+                            controls 
+                            poster={scenario.poster} 
+                            src={scenario.video} 
+                            style="width: 100%; border: 3px solid #000; display: block;"
+                        >
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            ))}
+        </div>
+        
+        <div class="text-center" style="margin-top: 3rem; margin-bottom: 3rem;">
+            <a href="#hero" class="btn btn-primary cta-btn" style="border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4); display: inline-block;">
+                <span class="desktop-only">BOOK A CALL — TEST AI & PLUG IT INTO YOUR BUSINESS</span>
+                <span class="mobile-only" style="text-align: center;">BOOK A CALL — TEST AI &<br/>PLUG IT INTO YOUR BUSINESS</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .scenarios-section {
+        padding-top: 60px;
+        padding-bottom: 0px;
+        overflow: hidden;
+    }
+
+    .scenarios-header {
+        margin-bottom: 3.5rem;
+    }
+
+    .scenarios-title {
+        font-size: 3.5rem;
+        letter-spacing: -0.5px;
+    }
+
+    .scenarios-subtitle {
+        font-size: 1.5rem;
+        color: #4a4a4a;
+        max-width: 1000px;
+        margin: 0 auto;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 991px) {
+        .scenarios-section .container {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .scenarios-title {
+            font-size: 2.4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+        .scenarios-subtitle {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .scenario-title {
+            font-size: 6.8vw !important;
+            margin-bottom: 0.5rem !important;
+            line-height: 1.1 !important;
+        }
+        .scenario-desc {
+            font-size: 3.9vw !important;
+            margin-bottom: 0.5rem !important;
+            line-height: 1.4 !important;
+        }
+    }
+
+    .scenario-title {
+        font-size: 6.5cqi;
+        margin-bottom: 1.5rem;
+    }
+
+    .scenario-desc {
+        font-size: 3.6cqi;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-btn {
+        padding: 20px 40px;
+        font-size: 1.25rem;
+    }
+
+    @media (max-width: 991px) {
+        .cta-btn {
+            padding: 15px 15px !important;
+            font-size: 4.8vw !important;
+            line-height: 1.4 !important;
+        }
+    }
+
+    .scenarios-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    @media (min-width: 768px) {
+        .scenarios-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+    }
+
+    .scenario-item {
+        animation: fadeIn 0.6s ease-out forwards;
+        opacity: 0;
+        height: 100%;
+        padding: 0;
+    }
+
+    .scenario-video {
+        width: 100%;
+        margin-top: auto;
+    }
+</style>

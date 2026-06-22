@@ -1,0 +1,394 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const leftCol = [
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68c22d9532a8cd64d0c4bb80.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68b4ad5693b60892b6909ee4.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/6962c0d3c7683b384a72265a.png'
+];
+
+const rightCol = [
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68b4ad56ba67b30978c43917.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/6962c0dff8a93b113e9487e3.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/6962bda9f8a93b1e8a91b5db.png',
+    'https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/68b4b1ccde84f462d40bc8c0.png'
+];
+---
+
+<Layout>
+    <style>
+        .confirmation-section {
+            padding-top: 40px;
+            padding-bottom: 60px;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .confirmation-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .inner-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .text-gradient-blue {
+            background: -webkit-linear-gradient(0deg, #38bdf8 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .mobile-only { display: none; }
+
+        .logo-img {
+            max-width: 300px;
+            height: auto;
+            display: block;
+            margin: 0 auto 30px auto;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.5rem;
+            top: -2px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        @media (min-width: 769px) {
+            .testimonials-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+            .confirmation-container { padding: 0 10px; }
+            
+            .logo-img {
+                max-width: 220px;
+                margin-bottom: 20px;
+            }
+
+            .bullet-list li {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            .faq-item {
+                margin-bottom: 12px;
+            }
+
+            .faq-question {
+                padding: 8px 40px 8px 10px;
+                font-size: 1.05rem;
+            }
+
+            .faq-question::after {
+                right: 15px;
+            }
+
+            .faq-answer {
+                padding: 0 10px 10px 10px;
+                margin-top: 5px;
+                padding-top: 10px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* FAQ Accordion Styling */
+        .faq-item {
+            border: 2px solid #0ea5e9;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .faq-question {
+            padding: 35px 60px 35px 30px;
+            font-size: 1.4rem;
+            color: #000;
+            cursor: pointer;
+            position: relative;
+            list-style: none; /* Removes default arrow in standard browsers */
+        }
+
+        /* Removes default arrow in Safari/Webkit */
+        .faq-question::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-question::after {
+            content: '';
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            border-bottom: 3px solid #0ea5e9;
+            border-right: 3px solid #0ea5e9;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] .faq-question::after {
+            transform: translateY(-50%) rotate(225deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            font-size: 1.1rem;
+            color: #333;
+            line-height: 1.5;
+            border-top: 1px solid rgba(14, 165, 233, 0.2);
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+
+        details[open] .faq-item {
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.1);
+        }
+    </style>
+
+    <section class="section confirmation-section animate-fade-in">
+        <div class="confirmation-container text-center">
+            
+            <!-- LOGO -->
+            <img src="https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/69f2eaabfc17decc451726a3.png" alt="Restoration AI Logo" class="logo-img" />
+
+            <!-- TOP HEADLINE -->
+            <h1 class="fw-black desktop-only" style="text-align: center; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 15px;">
+                <span style="font-size: 2.8vw; white-space: nowrap; display: block;"><span class="text-gradient-blue">Congrats!</span> Your Strategy Session is Booked. Get Ready To</span>
+                <span style="font-size: 2.8vw; white-space: nowrap; display: block;">See <span class="text-gradient-blue">The System That Puts Your Business on Autopilot.</span></span>
+            </h1>
+            
+            <h1 class="fw-black mobile-only" style="text-align: center; line-height: 1.15; letter-spacing: -1px; margin-bottom: 15px;">
+                <span style="font-size: 7vw; white-space: nowrap; display: block;"><span class="text-gradient-blue">Congrats!</span> Your Strategy</span>
+                <span style="font-size: 7vw; white-space: nowrap; display: block;">Session is Booked. Get</span>
+                <span style="font-size: 7vw; white-space: nowrap; display: block;">Ready To See <span class="text-gradient-blue">The System</span></span>
+                <span style="font-size: 7vw; white-space: nowrap; display: block;"><span class="text-gradient-blue">That Puts Your Business on</span></span>
+                <span style="font-size: 7vw; white-space: nowrap; display: block;"><span class="text-gradient-blue">Autopilot.</span></span>
+            </h1>
+
+            <!-- SUBTEXT -->
+            <p class="desktop-only" style="text-align: center; font-weight: 400; color: #444; line-height: 1.5; margin-top: 0; margin-bottom: 40px;">
+                <span style="font-size: 1.3vw; white-space: nowrap; display: block;">On our call, we'll build the exact blueprint for capturing every lead and streamlining your</span>
+                <span style="font-size: 1.3vw; white-space: nowrap; display: block;">operations. Please read the important information below to prepare for our meeting.</span>
+            </p>
+            
+            <p class="mobile-only" style="text-align: center; font-size: 4vw; font-weight: 400; color: #444; line-height: 1.4; margin-top: 0; margin-bottom: 30px;">
+                <span style="display: block; white-space: nowrap;">On our call, we'll build the exact blueprint for</span>
+                <span style="display: block; white-space: nowrap;">capturing every lead and streamlining your</span>
+                <span style="display: block; white-space: nowrap;">operations. Please read the important</span>
+                <span style="display: block; white-space: nowrap;">information below to prepare for our meeting.</span>
+            </p>
+
+            <!-- MEETING INFO SECTION -->
+            <div class="inner-content">
+                <h2 class="fw-black" style="font-size: clamp(1.8rem, 3vw, 2.2rem); margin-bottom: 10px;">Information For Your Meeting</h2>
+                
+                <!-- STEP 1 HEADLINE -->
+                <h2 class="fw-black desktop-only text-gradient-blue" style="font-size: clamp(1.6rem, 2.5vw, 2rem); margin-bottom: 20px;">
+                    STEP 1: Know Every Lead Is Covered
+                </h2>
+
+                <h2 class="fw-black mobile-only" style="text-align: center; line-height: 1.15; margin-bottom: 20px;">
+                    <span style="font-size: 6vw; white-space: nowrap; display: block;"><span class="text-gradient-blue">STEP 1: Know Every Lead Is</span></span>
+                    <span style="font-size: 6vw; white-space: nowrap; display: block;"><span class="text-gradient-blue">Covered</span></span>
+                </h2>
+
+                <!-- PARAGRAPH -->
+                <p class="desktop-only fw-bold" style="font-size: 1.1rem; color: #000; line-height: 1.4; margin-bottom: 20px;">
+                    As you prepare for our meeting, remember this: your phone will never go unanswered again.<br/>
+                    Day or night, one call or ten at once, our AI answers instantly and captures every lead — even the emergencies that<br/>
+                    hit at 2 AM.
+                </p>
+
+                <p class="mobile-only fw-bold" style="text-align: center; font-size: 3.8vw; color: #000; line-height: 1.3; margin-bottom: 20px;">
+                    <span style="display: block; white-space: nowrap;">As you prepare for our meeting, remember this:</span>
+                    <span style="display: block; white-space: nowrap;">your phone will never go unanswered again.</span>
+                    <span style="display: block; white-space: nowrap;">Day or night, one call or ten at once, our AI</span>
+                    <span style="display: block; white-space: nowrap;">answers instantly and captures every lead —</span>
+                    <span style="display: block; white-space: nowrap;">even the emergencies that hit at 2 AM.</span>
+                </p>
+
+                <!-- BULLET POINTS -->
+                <ul class="bullet-list">
+                    <li><strong style="color: #000;">24/7 coverage</strong> – no missed calls after hours</li>
+                    <li><strong style="color: #000;">Handles multiple calls at once</strong> – no more putting people on hold</li>
+                    <li><strong style="color: #000;">Every lead captured</strong> – so you never lose a high-value job</li>
+                    <li><strong style="color: #000;">Instant response</strong> – customers hear a friendly voice right away</li>
+                    <li><strong style="color: #000;">Peace of mind</strong> – you can sleep knowing no job slips through the cracks</li>
+                </ul>
+
+                <!-- STEP 2 HEADLINE (Incomplete from screenshot) -->
+                <h2 class="fw-black desktop-only text-gradient-blue" style="font-size: clamp(1.6rem, 2.5vw, 2rem); margin-top: 50px;">
+                    STEP 2: See How It All Fits Together
+                </h2>
+
+                <h2 class="fw-black mobile-only" style="text-align: center; line-height: 1.15; margin-top: 40px;">
+                    <span style="font-size: 6vw; white-space: nowrap; display: block;"><span class="text-gradient-blue">STEP 2: See How It All Fits</span></span>
+                    <span style="font-size: 6vw; white-space: nowrap; display: block;"><span class="text-gradient-blue">Together</span></span>
+                </h2>
+
+            <p class="fw-bold" style="text-align: center; font-size: 1.1rem; color: #444; line-height: 1.5; margin: 20px auto 40px auto; max-width: 800px;">
+                Your System goes far beyond just answering calls. It's a complete, unified platform designed to save you time, money, and hassle at every stage of the client lifecycle.
+            </p>
+
+            <!-- FAQ ACCORDIONS -->
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto; text-align: left;">
+                
+                <!-- FAQ 1 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">Handle Distressed Callers with Empathy</summary>
+                    <div class="faq-answer">
+                        Both the Voice and Website AI are trained to use a calm, reassuring tone to professionally manage callers who are in a state of panic.
+                    </div>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">Eliminate Repetitive Tasks</summary>
+                    <div class="faq-answer">
+                        The system automatically handles appointment reminders, follow-ups with leads who didn't book, and answers common questions, freeing your team for high-value work.
+                    </div>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">Unify All Communications</summary>
+                    <div class="faq-answer">
+                        All your leads and client conversations from phone calls, website chats, texts, and emails—are consolidated into one simple, organized inbox.
+                    </div>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">Maximize Your Marketing ROI</summary>
+                    <div class="faq-answer">
+                        Stop letting expensive clicks go to waste. Our AI agents engage every lead from your ads, ensuring you convert the maximum number of visitors into booked jobs.
+                    </div>
+                </details>
+
+                <!-- FAQ 5 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">Gain Total Peace of Mind</summary>
+                    <div class="faq-answer">
+                        Know with 100% certainty that every single lead is being captured and followed up on, 24/7/365, whether you're on a job site, with your family, or asleep.
+                    </div>
+                </details>
+
+            </div>
+
+            <!-- CLIENT WINS HEADER -->
+            <h2 class="fw-black" style="font-size: clamp(2rem, 3.5vw, 2.5rem); margin-top: 60px; margin-bottom: 40px; text-align: center;">
+                Some Of Our <span class="text-gradient-blue">Client Wins</span>
+            </h2>
+
+            <!-- TESTIMONIAL IMAGES GRID -->
+            <div class="testimonials-grid">
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    {leftCol.map(img => (
+                        <img src={img} alt="Customer Testimonial" style="width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);" />
+                    ))}
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    {rightCol.map(img => (
+                        <img src={img} alt="Customer Testimonial" style="width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);" />
+                    ))}
+                </div>
+            </div>
+
+            <!-- SECOND FAQ SECTION -->
+            <h2 class="fw-black" style="font-size: clamp(2rem, 3.5vw, 2.5rem); margin-top: 60px; margin-bottom: 40px; text-align: center;">
+                Some <span class="text-gradient-blue">FAQs</span>
+            </h2>
+
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto; text-align: left; padding-bottom: 40px;">
+                
+                <!-- FAQ 1 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">How realistic does the AI sound?</summary>
+                    <div class="faq-answer">
+                        Our AI uses the latest technology to produce an incredibly human-like, natural-sounding voice with conversational capabilities. You can test it yourself with the demo number at the top of this page. Most callers don't realize they aren't speaking with a live person.
+                    </div>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">How much work is this for me to set up and manage?</summary>
+                    <div class="faq-answer">
+                        Virtually none. Our service is 100% "done-for-you." We handle the entire white-glove setup, AI training, and system integration. Your only job is to focus on your craft and service the new clients we help you acquire.
+                    </div>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">Does this replace my office staff?</summary>
+                    <div class="faq-answer">
+                        No. It enhances them. The AI handles the repetitive, time-consuming tasks: answering every call, asking initial questions, and scheduling. This frees up your skilled office manager or dispatcher to focus on high-value activities like customer service, project coordination, and team management.
+                    </div>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">What happens if a caller has a complex or unique situation?</summary>
+                    <div class="faq-answer">
+                        The AI is trained to recognize when a caller needs to speak with a human. It can seamlessly transfer the call directly to you or a designated team member in real-time, providing a smooth and professional handoff.
+                    </div>
+                </details>
+
+                <!-- FAQ 5 -->
+                <details class="faq-item">
+                    <summary class="faq-question fw-black">How is this different from a traditional 24/7 answering service?</summary>
+                    <div class="faq-answer">
+                        A traditional service is a passive message-taker. Our AI is an active participant in your business. It doesn't just take a message; it qualifies leads, books appointments directly into your calendar, answers questions, and integrates every interaction into a comprehensive CRM system. It's an operations hub, not just a call center.
+                    </div>
+                </details>
+
+            </div>
+
+            <!-- FINAL FOOTER HEADER -->
+            <h2 class="fw-black" style="font-size: clamp(1.8rem, 3vw, 2.2rem); margin-top: 20px; margin-bottom: 60px; text-align: center; color: #000;">
+                We Look Forward To Speaking With You!
+            </h2>
+
+            </div>
+
+        </div>
+    </section>
+</Layout>
