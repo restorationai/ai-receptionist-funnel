@@ -110,7 +110,15 @@ import Layout from '../layouts/Layout.astro';
 
                         // If we detect a calendar booking success message, redirect!
                         if (dataStr.includes('submit') || dataStr.includes('success') || dataStr.includes('booking') || dataStr.includes('appointment')) {
-                            window.location.href = '/confirmation';
+                            // Fire the Meta Pixel Conversion Event
+                            if (typeof fbq === 'function') {
+                                fbq('track', 'Schedule');
+                            }
+                            
+                            // Give the pixel 300ms to fire before unloading the page
+                            setTimeout(function() {
+                                window.location.href = '/confirmation';
+                            }, 300);
                         }
                     });
                 </script>
