@@ -1,0 +1,8 @@
+name = "ab-test-router"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# This automatically creates the DNS record and binds the route!
+routes = [
+  { pattern = "demo.restorationai.io", custom_domain = true }
+]
